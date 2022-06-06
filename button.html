@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+</head>
+<body>
+    <button id="sqr" onmouseover="run()" onclick="win()" style="position: fixed;">Click me</button>
+        <script>
+            function run() {
+                let sqr = document.getElementById("sqr");
+
+                document.body.style.backgroundColor = getRandomColor();
+                
+                let name = ["U can't", "Looser!", "U won't click", "It's possible", "U're sick", "Untouchable"];
+                let random = Math.floor(Math.random() * name.length);
+                sqr.innerText = name[random];
+
+                /* Math RNG Height */
+                let n = Math.random();
+                n *= window.innerHeight;
+                n = Math.round(n);
+                n -= sqr.clientHeight;
+                let top = n.toString() + "px";
+                sqr.style.top = top;
+
+                /* Math RNG Width */
+                n = Math.random();
+                n *= window.innerWidth;
+                n = Math.round(n);
+                n -= sqr.clientWidth;
+                let right = n.toString() + "px";
+                sqr.style.right = right;
+                console.log("The Button is invaded");
+            }
+
+                /* BG Color */
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+            function win() {
+                window.alert("You wasted your time");
+                location.href = "about:blank";
+            }
+        </script>
+</body>
+</html>
